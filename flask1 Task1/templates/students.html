@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+</head>
+<body>
+  <div class="card">
+    <h2>Student Registration</h2>
+
+    <form action="/register" method="POST">
+      <label>Name</label>
+      <input type="text" name="name" required>
+
+      <label>Email</label>
+      <input type="email" name="email" required>
+
+      <label>DOB</label>
+      <input type="date" name="dob" required>
+
+      <label>Department</label>
+      <select name="department" required>
+        <option value="">Select</option>
+        <option>ECE</option>
+        <option>CSE</option>
+        <option>EEE</option>
+        <option>MECH</option>
+      </select>
+
+      <label>Phone</label>
+      <input type="tel" name="phone" pattern="[0-9]{10}" required>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <p><a href="/students">View Students</a></p>
+  </div>
+</body>
+</html>
+
+	students.html
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Students</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+</head>
+<body>
+  <div class="card">
+    <h2>Registered Students</h2>
+
+    <table>
+      <tr>
+        <th>ID</th><th>Name</th><th>Email</th><th>DOB</th><th>Dept</th><th>Phone</th>
+      </tr>
+      {% for s in students %}
+      <tr>
+        <td>{{ s.id }}</td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.email }}</td>
+        <td>{{ s.dob }}</td>
+        <td>{{ s.department }}</td>
+        <td>{{ s.phone }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <p><a href="/">Back</a></p>
+  </div>
+</body>
+</html>
+
+
