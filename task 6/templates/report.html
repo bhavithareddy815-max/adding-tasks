@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Activity Report</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        table { border-collapse: collapse; width: 80%; margin-bottom: 20px; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+<h1>Daily Activity Report</h1>
+
+<h2>Summary</h2>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Total Changes</th>
+    </tr>
+    {% for row in daily_report %}
+    <tr>
+        <td>{{ row.log_date }}</td>
+        <td>{{ row.total_changes }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Detailed Logs</h2>
+<table>
+    <tr>
+        <th>Log ID</th>
+        <th>Emp ID</th>
+        <th>Action</th>
+        <th>Old Name</th>
+        <th>New Name</th>
+        <th>Old Salary</th>
+        <th>New Salary</th>
+        <th>Changed At</th>
+    </tr>
+
+    {% for log in detailed_logs %}
+    <tr>
+        <td>{{ log.log_id }}</td>
+        <td>{{ log.emp_id }}</td>
+        <td>{{ log.action }}</td>
+        <td>{{ log.old_name or '' }}</td>
+        <td>{{ log.new_name or '' }}</td>
+        <td>{{ log.old_salary or '' }}</td>
+        <td>{{ log.new_salary or '' }}</td>
+        <td>{{ log.changed_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
