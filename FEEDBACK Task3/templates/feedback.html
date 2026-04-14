@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feedback Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <div class="card">
+    <h2>Feedback Form</h2>
+
+    <form action="/submit" method="POST">
+      <label>Name</label>
+      <input type="text" name="name" id="name"
+             placeholder="Enter your name"
+             onkeyup="validateText(this)"
+             onmouseover="highlight(this)"
+             onmouseout="removeHighlight(this)"
+             required>
+
+      <label>Email</label>
+      <input type="email" name="email" id="email"
+             placeholder="Enter your email"
+             onkeyup="validateEmail(this)"
+             onmouseover="highlight(this)"
+             onmouseout="removeHighlight(this)"
+             required>
+
+      <label>Message</label>
+      <textarea name="message" id="message"
+                placeholder="Enter your feedback"
+                onkeyup="validateText(this)"
+                onmouseover="highlight(this)"
+                onmouseout="removeHighlight(this)"
+                required></textarea>
+
+      <!-- IMPORTANT: double click submit -->
+     <button type="submit">Submit</button>
+    </form>
+
+    <p id="error" class="error"></p>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/feedback.js') }}"></script>
+</body>
+</html>
