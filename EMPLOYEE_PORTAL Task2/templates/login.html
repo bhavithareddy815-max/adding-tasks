@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Login</title>
+    <script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+</head>
+<body>
+
+<h2>Employee Login</h2>
+
+<form method="POST" onsubmit="return validateLogin()">
+    Email:
+    <input type="email" id="login_email" name="email"><br><br>
+
+    Password:
+    <input type="password" id="login_password" name="password"><br><br>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <button type="submit">Login</button>
+</form>
+
+<a href="/register">Register</a>
+
+</body>
+</html>
